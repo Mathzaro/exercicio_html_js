@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulário com Campos Numéricos</title>
+</head>
+<body>
+    <h1>Formulário com Campos Numéricos</h1>
+    <form onsubmit="return validarFormulario(event);">
+        <label for="campoA">Campo A:</label>
+        <input type="number" id="campoA" name="campoA" required><br><br>
+
+        <label for="campoB">Campo B:</label>
+        <input type="number" id="campoB" name="campoB" required><br><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+
+    <div id="mensagem"></div>
+
+    <script>
+        function validarFormulario(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            var campoA = parseFloat(document.getElementById("campoA").value);
+            var campoB = parseFloat(document.getElementById("campoB").value);
+            var mensagemDiv = document.getElementById("mensagem");
+
+            if (campoB > campoA) {
+                mensagemDiv.innerHTML = "Mensagem Positiva: Campo B é maior que Campo A";
+                mensagemDiv.style.color = "green";
+            } else {
+                mensagemDiv.innerHTML = "Mensagem Negativa: Campo B deve ser maior que Campo A";
+                mensagemDiv.style.color = "red";
+            }
+
+            return false; // Impede o envio do formulário
+        }
+    </script>
+</body>
+</html>
